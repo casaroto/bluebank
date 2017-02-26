@@ -21,8 +21,10 @@
 - Projeto Backend deployado em war JEE rodando em servidor JBOSS
 
 ## Ambiente de desenvolvimento
-- Servidor: JBOSS EAP 6.1
-- IDE Eclipse
+- Servidor Java: JBOSS EAP 6.1 - Linux
+- Servidor MYSQL 5.1 - Linux
+- IDE Eclipse para desenvolvimento Java rodando em linux
+- IDE Visual Studio Code para desenvolvimento Angular JS 2 rodando em MacOS
 
 ## Ambiente cloud escolhido para live preview do projeto
 - AWS
@@ -31,7 +33,7 @@
 https://github.com/casaroto/bluebank
 
 ## WIKI da API
-https://github.com/casaroto/bluebank/wiki/API--Bluebank
+https://github.com/casaroto/bluebank/wiki
 
 ## Problemas e bugs
 https://github.com/casaroto/bluebank/issues
