@@ -30,7 +30,11 @@
 ## Github
 https://github.com/casaroto/bluebank
 
+## WIKI da API
+https://github.com/casaroto/bluebank/wiki/API--Bluebank
+
 ## Instruções para deploy e execução
 - [TODO]
 
-
+## Realese MAP * alterações desejadas para versão 2.0
+- Incluir SWAGGER para documentação da API e retirar informações da WIKI

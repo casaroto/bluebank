@@ -6,7 +6,7 @@ import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
 import br.com.bluebank.controller.UsuarioController;
-import br.com.bluebank.domain.UsuarioVO;
+import br.com.bluebank.domain.CorrentistaVO;
 
  
 
@@ -14,7 +14,7 @@ public class UsuarioControllerTest {
 	
 	@Test(expected=AssertionFailedError.class)
 	public void getUsuarioNaoLogadoTest() {
-		UsuarioVO usuario = null;
+		CorrentistaVO usuario = null;
 		
 		UsuarioController controller = new UsuarioController();
 		
