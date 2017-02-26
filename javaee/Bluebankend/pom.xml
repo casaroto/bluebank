@@ -13,7 +13,7 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring dependencies -->
-				<dependency>
+		<!--		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.1.4.RELEASE</version>
@@ -34,17 +34,17 @@
 			<version>4.1.4.RELEASE</version>
 		</dependency>
 		
-		 <!--   <dependency>
+		   <dependency>
 		   <groupId>org.codehaus.jackson</groupId>
 		   <artifactId>jackson-mapper-asl</artifactId>
-		   <version>1.9.10</version>
-		  </dependency>-->
+		   <version>1.9.13</version>
+		  </dependency>
 		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-		</dependency>
+		</dependency>--> 
 		
 	</dependencies>
   
