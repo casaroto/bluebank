@@ -8,7 +8,7 @@
 - Backend Java EE - Spring framework -Spring MVC para criação das APIs REST
 - Utilização de arquitetura OOP, utilizando MVC - com divisão de camadas de serviço REST, camada Business e camada DAO para persistência 
 - Banco de dados relacional ORM MYSQL 
-- Testes unitários utilizando PowerMockito
+- Testes unitários utilizando Junit4
 
 ## Proposta de criação inicial do projeto
 - Criação interativa de uma prova de conceito com interface web simples acessando uma API REST inicialmente mockada 
