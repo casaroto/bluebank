@@ -3,7 +3,11 @@ package br.com.bluebank.domain;
 public class MensagemVO {
 	
 		
-		private String mensagem = "Aproveite nossa nova linha de crédito.";
+		private String mensagem;
+		
+		public MensagemVO(){
+			this.mensagem = "Aproveite nossa nova linha de crédito.";
+		}
 		
 		public String getMensagem(){
 			

@@ -48,9 +48,11 @@ https://github.com/casaroto/bluebank/issues
 
 ## Realese map *alterações desejadas para versão 2.0 (não foram realizadas devido a restrição de tempo)
 - Incluir SWAGGER para documentação da API e retirar informações da WIKI
+- Incluir chamadas a log em todas as classes e pontos críticos do sistema
 - Melhorar código Angular 2 com uso de Observables 
 - Melhorias de segurança:
 	Filtrar todo conteúdo enviado via API para impedir ataques sql injection, XSS
 - Passar todo código fonte na ferramenta SONAR para garantia de qualidade
+
 
 

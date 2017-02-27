@@ -16,6 +16,7 @@ import br.com.bluebank.domain.CorrentistaVO;
 public class CorrentistaDAOImpl implements CorrentistaDAO {
 	
 	private DataSource dataSource;
+	private static final String CODIGO_SQL_LISTAR_CORRENTISTAS = "SELECT * FROM correntista";
 	
 	public CorrentistaDAOImpl(){
 		this.dataSource = new DataSource();
@@ -29,7 +30,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 				Statement stmt = null;
 				ResultSet rs = null;
 		        stmt = conn.createStatement();
-		        rs = stmt.executeQuery("SELECT * FROM correntista");
+		        rs = stmt.executeQuery(CODIGO_SQL_LISTAR_CORRENTISTAS);
 		        
 		        while (rs.next()){
 		        	CorrentistaVO correntista = new CorrentistaVO();
