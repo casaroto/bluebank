@@ -1,22 +1,22 @@
 
 
-CREATE TABLE `clientes` (
-  `idcliente` int(11) NOT NULL,
+CREATE TABLE `correntista` (
+  `idcorrentista` int(11) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `cpfCnpj` varchar(14) DEFAULT NULL,
-  PRIMARY KEY (`idcliente`)
+  PRIMARY KEY (`idcorrentista`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
 
-CREATE TABLE `contas` (
-  `idcontas` int(11) NOT NULL,
+CREATE TABLE `conta` (
+  `idconta` int(11) NOT NULL,
   `agencia` int(11) DEFAULT NULL,
   `dac_agencia` int(11) DEFAULT NULL,
   `conta` int(11) DEFAULT NULL,
   `dac_conta` int(11) DEFAULT NULL,
-  `idcliente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idcontas`)
+  `idcorrentista` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idconta`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
