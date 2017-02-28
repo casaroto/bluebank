@@ -19,8 +19,8 @@ public class TransferenciaDAOImpl implements TransferenciaDAO {
 	private ContaDAO contaDAO;
 	
 	private static final String CODIGO_SQL_ATUALIZAR_SALDO =
-			"UPDATE saldo SET valor = ? " + 
-			"WHERE idcorrentista_origem = ? AND idcorrentista_destino = ? ";
+			"UPDATE conta SET saldo = ? " + 
+			"WHERE idcorrentista = ?  ";
 	
 	private static final String MENSAGEM_TRANSFERENCIA_NAO_EFETUADA = "Transferência não efetuada!";
 	
@@ -35,24 +35,19 @@ public class TransferenciaDAOImpl implements TransferenciaDAO {
 	    		Connection conn = dataSource.obterConexao();
 	    		PreparedStatement stmt = null;
 		        stmt = conn.prepareStatement(CODIGO_SQL_ATUALIZAR_SALDO);
-		        stmt.setInt(1, transferenciaVO.getIdCorrentistaOrigem());
-		        stmt.setInt(2, transferenciaVO.getIdCorrentistaDestino());
-		        stmt.setDouble(3, transferenciaVO.getValor());
+		        stmt.setInt(1, transferenciaVO.getIdCorrentistaDestino());
+		        stmt.setDouble(2, transferenciaVO.getValor());
 		        
-		        int retorno = stmt.executeUpdate();
-		        
-		        if (retorno == 0){
-		        	throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
-		        }
+		        stmt.executeUpdate();
 		        
 		    } catch (SQLException ex) {
 		    	 ex.printStackTrace();
 		         System.out.println("SQLException: " + ex.getMessage());
-		         throw ex;
+		         throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
 		    } catch (Exception e) {
 		    	 e.printStackTrace();
 		         System.out.println("SQLException: " + e.getMessage());
-		         throw e;
+		         throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
 			}	
 	
 	}

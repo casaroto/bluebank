@@ -1,6 +1,7 @@
 package br.com.bluebank.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,13 @@ public class TransferenciaController {
 	@Autowired
 	private TransferenciaBean transferenciaBean;
 	
+	//public RetornoOperacaoVO listarCorrentistasCadastradosTransferencia(@RequestBody TransferenciaVO transferenciaVO) {
 	@RequestMapping(value = "/transferencia", method = RequestMethod.POST,headers="Accept=application/json")
-	public RetornoOperacaoVO listarCorrentistasCadastradosTransferencia(TransferenciaVO transferenciaVO) {
-		 String mensagem = "";
+	public RetornoOperacaoVO listarCorrentistasCadastradosTransferencia(@RequestBody TransferenciaVO transferenciaVO) {
+			
+		String mensagem = "";
 		 boolean sucesso = false;
-		 
+		 //TransferenciaVO transferenciaVO = new TransferenciaVO();
 		 RetornoOperacaoVO retorno =  new RetornoOperacaoVO();
 		 
 		 try {

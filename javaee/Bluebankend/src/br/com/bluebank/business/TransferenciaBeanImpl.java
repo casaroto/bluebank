@@ -23,15 +23,32 @@ public class TransferenciaBeanImpl implements TransferenciaBean {
 	
 	public void efetuarTransferencia(TransferenciaVO transferenciaVO) throws Exception{
 		
-		ContaVO contaVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaOrigem()); 
+		ContaVO contaOrigemVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaOrigem()); 
+		ContaVO contaDestinoVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaDestino()); 
 		
-		double saldo = contaVO.getSaldo();
+		double saldoOrigem = contaOrigemVO.getSaldo();
+		double saldoDestino = contaDestinoVO.getSaldo();
 		
-       if ( (saldo - transferenciaVO.getValor() ) < 0){
-        	throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
-       }
+		saldoOrigem = saldoOrigem - transferenciaVO.getValor();
 		
-		transferenciaDAO.efetuarTransferencia(transferenciaVO);
+		if ( saldoOrigem < 0){
+			throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
+		}
+       
+       TransferenciaVO transferenciaOrigem = new TransferenciaVO();
+       TransferenciaVO transferenciaDestino = new TransferenciaVO();
+		
+       transferenciaOrigem.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaOrigem());
+       transferenciaOrigem.setValor(saldoOrigem);
+       
+       transferenciaDAO.efetuarTransferencia(transferenciaOrigem);
+		
+       saldoDestino = saldoDestino + transferenciaVO.getValor();
+       transferenciaDestino.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaDestino());
+       transferenciaDestino.setValor(saldoDestino);
+       
+       transferenciaDAO.efetuarTransferencia(transferenciaDestino);
+	  
 	}
 
 }
