@@ -23,6 +23,7 @@ public class TransferenciaDAOImpl implements TransferenciaDAO {
 			"WHERE idcorrentista = ?  ";
 	
 	private static final String MENSAGEM_TRANSFERENCIA_NAO_EFETUADA = "Transferência não efetuada!";
+	private static final String MENSAGEM_TRANSFERENCIA_NAO_CONTA_NAO_LOCALIZADA = "Transferência não efetuada, conta não localizada!";
 	
 	public TransferenciaDAOImpl(){
 		
@@ -35,10 +36,14 @@ public class TransferenciaDAOImpl implements TransferenciaDAO {
 	    		Connection conn = dataSource.obterConexao();
 	    		PreparedStatement stmt = null;
 		        stmt = conn.prepareStatement(CODIGO_SQL_ATUALIZAR_SALDO);
-		        stmt.setInt(1, transferenciaVO.getIdCorrentistaDestino());
-		        stmt.setDouble(2, transferenciaVO.getValor());
+		        stmt.setDouble(1, transferenciaVO.getValor());
+		        stmt.setInt(2, transferenciaVO.getIdCorrentistaDestino());
+
+		        int retorno = stmt.executeUpdate();
 		        
-		        stmt.executeUpdate();
+		        if (retorno == 0){
+		        	throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_CONTA_NAO_LOCALIZADA);
+		        }
 		        
 		    } catch (SQLException ex) {
 		    	 ex.printStackTrace();

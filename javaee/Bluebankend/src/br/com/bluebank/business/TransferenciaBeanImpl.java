@@ -9,7 +9,7 @@ import br.com.bluebank.domain.TransferenciaVO;
 
 @Component
 public class TransferenciaBeanImpl implements TransferenciaBean {
-	private static final String MENSAGEM_TRANSFERENCIA_NAO_EFETUADA = "Transferência não efetuada por insuficiência de fundos!";
+	private static final String MENSAGEM_TRANSFERENCIA_SEM_FUNDOS = "Transferência não efetuada por insuficiência de fundos!";
 	
 	@Autowired
 	private TransferenciaDAO transferenciaDAO;
@@ -32,7 +32,7 @@ public class TransferenciaBeanImpl implements TransferenciaBean {
 		saldoOrigem = saldoOrigem - transferenciaVO.getValor();
 		
 		if ( saldoOrigem < 0){
-			throw new Exception(MENSAGEM_TRANSFERENCIA_NAO_EFETUADA);
+			throw new Exception(MENSAGEM_TRANSFERENCIA_SEM_FUNDOS);
 		}
        
        TransferenciaVO transferenciaOrigem = new TransferenciaVO();
