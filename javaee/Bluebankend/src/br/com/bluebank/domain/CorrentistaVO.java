@@ -3,9 +3,11 @@ package br.com.bluebank.domain;
 public class CorrentistaVO {
 		private String nome;
 		private String cpf;
+		private int banco;
 		private int agencia;
+		private int agenciaDac;
 		private int conta;
-		private int dac;
+		private int contaDac;
 		private boolean logado;
 		
 		public String getNome() {
@@ -32,11 +34,11 @@ public class CorrentistaVO {
 		public void setConta(int conta) {
 			this.conta = conta;
 		}
-		public int getDac() {
-			return dac;
+		public int getContaDac() {
+			return contaDac;
 		}
-		public void setDac(int dac) {
-			this.dac = dac;
+		public void setContaDac(int dac) {
+			this.contaDac = dac;
 		}
 		public boolean isLogado() {
 			return logado;
@@ -44,5 +46,17 @@ public class CorrentistaVO {
 		public void setLogado(boolean logado) {
 			this.logado = logado;
 		}
-
+		public int getBanco() {
+			return banco;
+		}
+		public void setBanco(int banco) {
+			this.banco = banco;
+		}
+		public int getAgenciaDac() {
+			return agenciaDac;
+		}
+		public void setAgenciaDac(int agenciaDac) {
+			this.agenciaDac = agenciaDac;
+		}
+		
 }

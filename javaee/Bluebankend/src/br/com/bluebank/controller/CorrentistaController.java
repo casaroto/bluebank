@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bluebank.dao.CorrentistaDAO;
+import br.com.bluebank.business.CorrentistaBean;
 import br.com.bluebank.domain.CorrentistaVO;
 
 
@@ -18,23 +18,25 @@ import br.com.bluebank.domain.CorrentistaVO;
 public class CorrentistaController {
 	
 	@Autowired
-	private CorrentistaDAO correntistaDAO;
+	private CorrentistaBean correntistaBean;
 	
 	@RequestMapping(value = "/correntista/{cpfCnpjCorrentista}", method = RequestMethod.GET,headers="Accept=application/json")
 	public CorrentistaVO obterCorrentistaLogado(@PathVariable String cpfCnpjCorrentista) {
 		CorrentistaVO usuario = new CorrentistaVO();
 		
-		usuario.setLogado(true);
+		 usuario = correntistaBean.obterCorrentista(cpfCnpjCorrentista);
 		
+		 usuario.setLogado(true);
+		 
 		return usuario;
 	}
 	
 	@RequestMapping(value = "/correntistas/cadastrados/transferencia/{cpfCnpjCorrentista}", method = RequestMethod.GET,headers="Accept=application/json")
-	public List<CorrentistaVO> listarCorrentistas(@PathVariable String cpfCnpjCorrentista) {
+	public List<CorrentistaVO> listarCorrentistasCadastradosTransferencia(@PathVariable String cpfCnpjCorrentista) {
 		
 		 List<CorrentistaVO> listaCorrentistas = new ArrayList<CorrentistaVO>();
 		
-		 listaCorrentistas = correntistaDAO.listarCorrentistas();
+		 listaCorrentistas = correntistaBean.listarCorrentistasCadastradosTransferencia(cpfCnpjCorrentista);
 		
 		return listaCorrentistas;
 	}
