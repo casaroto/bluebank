@@ -2,6 +2,7 @@ package br.com.bluebank.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 			
 	private static final String CODIGO_SQL_OBTER_CORRENTISTA =
 			"SELECT * FROM correntista a, conta b " + 
-			"where a.idcorrentista = b.idcorrentista WHERE cpfCnpj=?";
+			"WHERE a.idcorrentista = b.idcorrentista AND cpfCnpj = ? ";
 	
 	public CorrentistaDAOImpl(){
 		this.dataSource = new DataSource();
@@ -37,11 +38,13 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		
 	    try {
 	    		Connection conn = dataSource.obterConexao();
-				CallableStatement stmt = null;
+	    		PreparedStatement stmt = null;
 				ResultSet rs = null;
-		        stmt = conn.prepareCall(CODIGO_SQL_LISTAR_CORRENTISTAS);
-		        stmt.setString("cpfCnpj", cpfCnpj);
+		        stmt = conn.prepareStatement(CODIGO_SQL_LISTAR_CORRENTISTAS);
+		        stmt.setString(1, cpfCnpj);
 		        
+		        rs = stmt.executeQuery();
+		        		
 		        while (rs != null && rs.next()){
 		        	CorrentistaVO correntista = new CorrentistaVO();
 		        	correntista.setNome(rs.getString("nome"));
@@ -68,10 +71,12 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		
 	    try {
 	    		Connection conn = dataSource.obterConexao();
-				CallableStatement stmt = null;
+	    		PreparedStatement stmt = null;
 				ResultSet rs = null;
-		        stmt = conn.prepareCall(CODIGO_SQL_OBTER_CORRENTISTA);
-		        stmt.setString("cpfCnpj", cpfCnpj);
+		        stmt = conn.prepareStatement(CODIGO_SQL_OBTER_CORRENTISTA);
+		        stmt.setString(1, cpfCnpj);
+		        
+		        rs = stmt.executeQuery();
 		        
 		        while (rs != null && rs.next()){
 		        	correntista.setNome(rs.getString("nome"));
