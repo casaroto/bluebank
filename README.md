@@ -38,6 +38,14 @@ https://github.com/casaroto/bluebank
 ## WIKI da API
 https://github.com/casaroto/bluebank/wiki
 
+## APIs publicadas no servidor AWS Jboss com integração a banco de dados Mysql
+http://ec2-52-91-28-48.compute-1.amazonaws.com/bluebank/rest/boasvindas
+http://ec2-52-91-28-48.compute-1.amazonaws.com/bluebank/rest/correntista/334.311.121-46
+http://ec2-52-91-28-48.compute-1.amazonaws.com/bluebank/rest/correntistas/cadastrados/transferencia/334.311.121-46
+
+## SPA publicado no servidor AWS
+http://ec2-52-91-28-48.compute-1.amazonaws.com/spa-0.0.1-SNAPSHOT/
+
 ## Problemas e bugs
 https://github.com/casaroto/bluebank/issues
 
