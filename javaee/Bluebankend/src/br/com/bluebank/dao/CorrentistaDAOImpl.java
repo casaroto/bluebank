@@ -1,6 +1,5 @@
 package br.com.bluebank.dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.bluebank.dao.utils.DataSource;
@@ -16,7 +16,9 @@ import br.com.bluebank.domain.CorrentistaVO;
 @Component
 public class CorrentistaDAOImpl implements CorrentistaDAO {
 	
+	@Autowired
 	private DataSource dataSource;
+	
 	private static final String CODIGO_SQL_LISTAR_CORRENTISTAS =
 			"SELECT * FROM correntista a, conta b " + 
 			"WHERE a.idcorrentista = b.idcorrentista AND " + 
@@ -30,7 +32,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 			"WHERE a.idcorrentista = b.idcorrentista AND cpfCnpj = ? ";
 	
 	public CorrentistaDAOImpl(){
-		this.dataSource = new DataSource();
+		
 	}
 	
 	public List<CorrentistaVO> listarCorrentistasCadastradosTransferencia(String cpfCnpj){
@@ -53,7 +55,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		        	correntista.setAgencia(rs.getInt("agencia"));
 		        	correntista.setAgenciaDac(rs.getInt("dac_agencia"));
 		        	correntista.setConta(rs.getInt("conta"));
-		        	correntista.setConta(rs.getInt("dac_conta"));
+		        	correntista.setContaDac(rs.getInt("dac_conta"));
 		        	lista.add(correntista);
 		        }
 		        

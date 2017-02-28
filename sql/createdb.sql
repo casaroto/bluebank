@@ -1,10 +1,8 @@
 
 USE bluebank;
 
-
 DROP TABLE correntista;
 DROP TABLE conta;
-DROP TABLE saldo;
 DROP TABLE autorizado_transferencia;
 DROP TABLE transferencia;
 
@@ -18,21 +16,14 @@ CREATE TABLE `correntista` (
 
 CREATE TABLE `conta` (
   `idconta` int(11) NOT NULL,
+  `idcorrentista` int(11) DEFAULT NULL,
   `banco` int(4) NOT NULL, 
   `agencia` int(11) DEFAULT NULL,
   `dac_agencia` int(11) DEFAULT NULL,
   `conta` int(11) DEFAULT NULL,
-  `dac_conta` int(11) DEFAULT NULL,
-  `idcorrentista` int(11) DEFAULT NULL,
+  `dac_conta` int(11) DEFAULT NULL, 
+  `saldo` decimal DEFAULT NULL,
   PRIMARY KEY (`idconta`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `saldo` (
-  `idsaldo` int(11) NOT NULL,
-  `idcorrentista` int(11) DEFAULT NULL,
-  `valor` decimal DEFAULT NULL,
-  PRIMARY KEY (`idsaldo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `autorizado_transferencia` (
@@ -59,18 +50,11 @@ insert into correntista values (3, 'Orlando Silva','33165275670');
 insert into correntista values (4, 'Osvaldo Augusto','44044173656'); 
 insert into correntista values (5, 'Tatiana Cristina','12864164264'); 
 
-insert into conta values (1, 100, 1400, 0, 132132, 9, 1); 
-insert into conta values (2, 237, 1500, 1, 312132, 1, 2); 
-insert into conta values (3, 34, 1100, 2, 443221, 0, 3); 
-insert into conta values (4, 33, 112, 5, 14050, 2, 4); 
-insert into conta values (5, 212, 5000, 3, 405060, 1, 5); 
-
-insert into saldo values (1, 1, 10000); 
-insert into saldo values (2, 2, 4544); 
-insert into saldo values (3, 3, 15000); 
-insert into saldo values (4, 5, 100000); 
-insert into saldo values (5, 5, 200); 
-
+insert into conta values (1, 1, 100, 1400, 0, 132132, 9, 12000); 
+insert into conta values (2, 2, 237, 1500, 1, 312132, 1, 20000); 
+insert into conta values (3, 3, 34, 1100, 2, 443221, 0, 300); 
+insert into conta values (4, 4, 33, 112, 5, 14050, 2, 4040); 
+insert into conta values (5, 5, 212, 5000, 3, 405060, 1, 5050); 
 
 insert into autorizado_transferencia values (1, 1, 2);
 insert into autorizado_transferencia values (2, 1, 3);
