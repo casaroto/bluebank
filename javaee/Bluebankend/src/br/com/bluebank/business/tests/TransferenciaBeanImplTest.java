@@ -30,7 +30,7 @@ public class TransferenciaBeanImplTest {
 	public void init(){
 		dao = Mockito.mock(TransferenciaDAO.class);
 		contaBean = Mockito.mock(ContaBean.class);
-		bean = Mockito.mock(TransferenciaBeanImpl.class);
+		bean = new TransferenciaBeanImpl();
 		Whitebox.setInternalState(bean, "transferenciaDAO", dao);
 		Whitebox.setInternalState(bean, "contaBean", contaBean);
 	}
