@@ -23,31 +23,31 @@ public class TransferenciaBeanImpl implements TransferenciaBean {
 	
 	public void efetuarTransferencia(TransferenciaVO transferenciaVO) throws Exception{
 		
-		ContaVO contaOrigemVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaOrigem()); 
-		ContaVO contaDestinoVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaDestino()); 
-		
-		double saldoOrigem = contaOrigemVO.getSaldo();
-		double saldoDestino = contaDestinoVO.getSaldo();
-		
-		saldoOrigem = saldoOrigem - transferenciaVO.getValor();
-		
-		if ( saldoOrigem < 0){
-			throw new Exception(MENSAGEM_TRANSFERENCIA_SEM_FUNDOS);
-		}
+			ContaVO contaOrigemVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaOrigem()); 
+			ContaVO contaDestinoVO = contaBean.obterConta(transferenciaVO.getIdCorrentistaDestino()); 
+			
+			double saldoOrigem = contaOrigemVO.getSaldo();
+			double saldoDestino = contaDestinoVO.getSaldo();
+			
+			saldoOrigem = saldoOrigem - transferenciaVO.getValor();
+			
+			if ( saldoOrigem < 0){
+				throw new Exception(MENSAGEM_TRANSFERENCIA_SEM_FUNDOS);
+			}
        
-       TransferenciaVO transferenciaOrigem = new TransferenciaVO();
-       TransferenciaVO transferenciaDestino = new TransferenciaVO();
-		
-       transferenciaOrigem.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaOrigem());
-       transferenciaOrigem.setValor(saldoOrigem);
-       
-       transferenciaDAO.efetuarTransferencia(transferenciaOrigem);
-		
-       saldoDestino = saldoDestino + transferenciaVO.getValor();
-       transferenciaDestino.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaDestino());
-       transferenciaDestino.setValor(saldoDestino);
-       
-       transferenciaDAO.efetuarTransferencia(transferenciaDestino);
+		   TransferenciaVO transferenciaOrigem = new TransferenciaVO();
+		   TransferenciaVO transferenciaDestino = new TransferenciaVO();
+			
+		   transferenciaOrigem.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaOrigem());
+		   transferenciaOrigem.setValor(saldoOrigem);
+		   
+		   transferenciaDAO.efetuarTransferencia(transferenciaOrigem);
+			
+		   saldoDestino = saldoDestino + transferenciaVO.getValor();
+		   transferenciaDestino.setIdCorrentistaDestino(transferenciaVO.getIdCorrentistaDestino());
+		   transferenciaDestino.setValor(saldoDestino);
+		   
+		   transferenciaDAO.efetuarTransferencia(transferenciaDestino);
 	  
 	}
 

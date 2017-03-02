@@ -1,10 +1,18 @@
 
+use mysql;
+
+CREATE USER blue;
+
+update user set password=PASSWORD('6945') where User='blue';
+
+FLUSH PRIVILEGES;
+
+GRANT ALL PRIVILEGES ON * . * TO 'blue'@'localhost';
+
+CREATE DATABASE bluebank;
+
 USE bluebank;
 
-DROP TABLE correntista;
-DROP TABLE conta;
-DROP TABLE autorizado_transferencia;
-DROP TABLE transferencia;
 
 CREATE TABLE `correntista` (
   `idcorrentista` int(11) NOT NULL,

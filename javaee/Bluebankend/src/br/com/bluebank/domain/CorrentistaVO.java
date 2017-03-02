@@ -1,6 +1,7 @@
 package br.com.bluebank.domain;
 
 public class CorrentistaVO {
+		private int idCorrentista;
 		private String nome;
 		private String cpf;
 		private int banco;
@@ -10,6 +11,12 @@ public class CorrentistaVO {
 		private int contaDac;
 		private boolean logado;
 		
+		public int getIdCorrentista() {
+			return idCorrentista;
+		}
+		public void setIdCorrentista(int idCorrentista) {
+			this.idCorrentista = idCorrentista;
+		}
 		public String getNome() {
 			return nome;
 		}

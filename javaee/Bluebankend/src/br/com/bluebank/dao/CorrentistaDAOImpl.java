@@ -49,6 +49,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		        		
 		        while (rs != null && rs.next()){
 		        	CorrentistaVO correntista = new CorrentistaVO();
+		        	correntista.setIdCorrentista(rs.getInt("idcorrentista"));
 		        	correntista.setNome(rs.getString("nome"));
 		        	correntista.setCpf(rs.getString("cpfCnpj"));
 		        	correntista.setBanco(rs.getInt("banco"));
@@ -81,6 +82,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		        rs = stmt.executeQuery();
 		        
 		        while (rs != null && rs.next()){
+		        	correntista.setIdCorrentista(rs.getInt("idcorrentista"));
 		        	correntista.setNome(rs.getString("nome"));
 		        	correntista.setCpf(rs.getString("cpfCnpj"));
 		        	correntista.setBanco(rs.getInt("banco"));
