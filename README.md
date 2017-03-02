@@ -31,8 +31,11 @@
 ## Ambiente cloud escolhido para live preview do projeto
 - Amazon Web Services
 
-## Site SPA publicado no servidor AWS para teste integrado da funcionalidade
+## Site SPA publicado no servidor AWS para teste integrado da funcionalidade  
 http://ec2-52-206-208-89.compute-1.amazonaws.com:4200/
+
+***Observação: RODAR COM PLUG-IN CORS DO CHROME INSTALADO, POIS O APLICATIVO E A API TIVERAM QUE FICAR EM PORTAS DIFERENTES
+https://chrome.google.com/webstore/search/CORSTOGGLE
 
 ## Github
 https://github.com/casaroto/bluebank
