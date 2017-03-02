@@ -58,9 +58,9 @@ https://github.com/casaroto/bluebank/issues
 
 ## Instruções para deploy e execução
 - Executar o arquivo createdb.sql no banco de dados Mysql
-- Configurar conexão ao banco de dados
 - Efetuar deploy dos projetos WAR e EAR gerados - diretório deploy
 - Ou importar projeto JavaEE na IDE Eclipse e exportar o WAR pela ferramenta de exportação.
+- Rodar o aplicativo spa do diretório com o comando ng serve
 
 ## Realese map *alterações desejadas para versão 2.0 (não foram realizadas devido a restrição de tempo)
 - Incluir SWAGGER para documentação da API e retirar informações da WIKI
