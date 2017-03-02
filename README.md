@@ -63,6 +63,7 @@ https://github.com/casaroto/bluebank/issues
 - Executar o arquivo createdb.sql no banco de dados Mysql
 - Efetuar deploy dos projetos WAR e EAR gerados - diretório deploy
 - Ou importar projeto JavaEE na IDE Eclipse e exportar o WAR pela ferramenta de exportação.
+- Em caso de problemas com dependências do Maven utilizar os arquivos .project e .classpath do diretório bluebank/javaee/arquivos-auxiliares
 - Rodar o aplicativo spa do diretório bluebank-spa-angular 
 	--Instalar as dependências com npm install
 	--Após isto rodar o aplicativo com ng serve --host 0.0.0.0
