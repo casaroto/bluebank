@@ -31,6 +31,9 @@
 ## Ambiente cloud escolhido para live preview do projeto
 - Amazon Web Services
 
+## Site SPA publicado no servidor AWS para teste integrado da funcionalidade
+http://ec2-52-206-208-89.compute-1.amazonaws.com:4200/
+
 ## Github
 https://github.com/casaroto/bluebank
 
@@ -49,9 +52,6 @@ http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/correntistas/cadastrados
 http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/transferencia/{idCorrentistaOrigem}/{idCorrentistaDestino}/{valor}   <br>
 Exemplo:
 http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/transferencia/2/1/1000   <br>
-
-## SPA publicado no servidor AWS
-http://ec2-52-206-208-89.compute-1.amazonaws.com:4200/
 
 ## Problemas e bugs
 https://github.com/casaroto/bluebank/issues

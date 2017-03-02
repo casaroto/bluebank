@@ -18,7 +18,7 @@ export class AppComponent  {
   mensagem: String;
 
   constructor(private http: Http) {
-      this.urlBase = 'http://192.168.0.11:8080/bluebackend';
+      this.urlBase = 'http://ec2-52-206-208-89.compute-1.amazonaws.com/bluebackend';
       this.obterContas();
       this.obterContaLogada();
    }
