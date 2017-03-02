@@ -37,7 +37,7 @@ https://github.com/casaroto/bluebank
 ## WIKI da API
 https://github.com/casaroto/bluebank/wiki
 
-## APIs publicadas no servidor AWS Jboss com integração ao banco de dados Mysql
+## APIs publicadas no servidor AWS Jboss 
 http://ec2-52-206-208-89.compute-1.amazonaws.com/bluebackend/rest/correntista/{cpf}     <br>
 Exemplo: 
 http://ec2-52-206-208-89.compute-1.amazonaws.com/bluebackend/rest/correntista/58424255135    <br>
