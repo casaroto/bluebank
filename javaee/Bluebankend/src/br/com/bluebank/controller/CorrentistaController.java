@@ -25,7 +25,7 @@ public class CorrentistaController {
 		CorrentistaVO usuario = new CorrentistaVO();
 		
 		 usuario = correntistaBean.obterCorrentista(cpfCnpjCorrentista);
-		
+	
 		 usuario.setLogado(true);
 		 
 		return usuario;

@@ -9,7 +9,7 @@
 - Utilização de arquitetura OOP, utilizando MVC - com divisão de camadas de serviço REST, camada Business e camada DAO para persistência 
 - Camada DAO criada com uso de interfaces e com injeção de dependências gerenciadas pelo Spring framework  
 - Banco de dados relacional ORM MYSQL 
-- Testes unitários utilizando Junit
+- Testes unitários utilizando Junit com Mockito
 
 ## Proposta de condução inicial do projeto
 - Criação interativa de uma prova de conceito com interface web simples acessando uma API REST inicialmente mockada 
