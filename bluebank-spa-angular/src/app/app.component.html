@@ -5,11 +5,8 @@
 <br>
 <br>
 <br>
-<span md-button color="primary">
-    Correntista logado:
-    {{contaLogada.nome}} - Agência: {{contaLogada.agencia}}/Conta:{{contaLogada.conta}}-{{contaLogada.contaDac}}
-</span>
 
+      <app-correntista [cpf]='correntistaLogado' [urlBase]='urlBase'  (onCorrentistaMudou)="onCorrentistaMudou($event)"></app-correntista>
 <div>
     <br>
     <br>
@@ -36,6 +33,13 @@
     <a md-raised-button color="primary" (click)="transferir()">Efetuar transferência</a>
     
   </div>
-   
+    <h1>Funcionalidades</h1>
+  <nav>
+    
+    <a routerLink="/saldo" routerLinkActive="active">Saldo</a>
+     <a routerLink="/transferencias" routerLinkActive="active">Transferências</a>
+  </nav>
+   <router-outlet></router-outlet>
+
     <br>
  

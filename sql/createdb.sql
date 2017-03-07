@@ -3,7 +3,11 @@ use mysql;
 
 CREATE USER blue;
 
+update user set host = 'localhost' where user='blue';
+
 update user set password=PASSWORD('6945') where User='blue';
+
+set password for 'blue'@'localhost' = PASSWORD('6945'); 
 
 FLUSH PRIVILEGES;
 
