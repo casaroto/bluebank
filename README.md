@@ -32,7 +32,7 @@
 - Amazon Web Services
 
 ## Site SPA publicado no servidor AWS para teste integrado da funcionalidade  
-http://ec2-52-206-208-89.compute-1.amazonaws.com:4200/
+http://ec2-52-87-229-207.compute-1.amazonaws.com:4200/
 
 ***Observação: RODAR COM PLUG-IN CORS DO CHROME INSTALADO, POIS O APLICATIVO E A API TIVERAM QUE FICAR EM PORTAS DIFERENTES
 https://chrome.google.com/webstore/search/CORSTOGGLE
@@ -44,17 +44,17 @@ https://github.com/casaroto/bluebank
 https://github.com/casaroto/bluebank/wiki
 
 ## APIs publicadas no servidor AWS Jboss 
-http://ec2-52-206-208-89.compute-1.amazonaws.com/bluebackend/rest/correntista/{cpf}     <br>
+http://ec2-52-87-229-207.compute-1.amazonaws.com/bluebackend/rest/correntista/{cpf}     <br>
 Exemplo: 
-http://ec2-52-206-208-89.compute-1.amazonaws.com/bluebackend/rest/correntista/58424255135    <br>
+http://ec2-52-87-229-207.compute-1.amazonaws.com/bluebackend/rest/correntista/58424255135    <br>
 
-http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/{cpf}     <br>
+http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/{cpf}     <br>
 Exemplo:
-http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/58424255135   <br>
+http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/58424255135   <br>
 
-http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/transferencia/{idCorrentistaOrigem}/{idCorrentistaDestino}/{valor}   <br>
+http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/transferencia/{idCorrentistaOrigem}/{idCorrentistaDestino}/{valor}   <br>
 Exemplo:
-http://ec2-52-206-208-89.amazonaws.com/bluebackend/rest/transferencia/2/1/1000   <br>
+http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/transferencia/2/1/1000   <br>
 
 ## Problemas e bugs
 https://github.com/casaroto/bluebank/issues
