@@ -1,4 +1,0 @@
-#!/bin/sh
-echo '###### npm install -g angular-cli@1.0.0-beta.28.3'
-npm install -g angular-cli@1.0.0-beta.28.3
-echo '###### npm install -g angular-cli@1.0.0-beta.28.3 end'
