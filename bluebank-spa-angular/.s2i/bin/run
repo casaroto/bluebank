@@ -2,6 +2,6 @@
 
 echo "Making pre run invocation changes..." 
 
-npm install -g angular-cli@1.0.0-beta.28.3
+npm install -g  @angular/cli@1.2.5
 
 exec /usr/libexec/s2i/run
