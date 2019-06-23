@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@angular/cli": "1.2.5",
-    "@angular/compiler-cli": "~2.3.1",
+    "@angular/compiler-cli": "2.3.1",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.42",
     "codelyzer": "2.0.0-beta.1",
@@ -44,8 +44,8 @@
     "protractor": "4.0.13",
     "ts-node": "1.2.1",
     "tslint": "4.3.0",
-    "typescript": "2.0.3",
-    "webpack": "^3.10.0",
+    "typescript": "2.0.0",
+    "webpack": "3.1.0",
     "webpack-concat-plugin": "1.4.2",
     "webpack-dev-server": "2.11.1",
     "webpack-merge": "4.1.2"
