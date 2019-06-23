@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "Making pre-invocation changes..."
+
+ echo "Making post-invocation changes..." 
+ echo '###### npm install -g angular-cli'
+ npm install -g @angular/cli@1.2.5
+ echo '###### npm install -g angular-cli end'
+ /usr/libexec/s2i/assemble
+
+ #echo "#####: assemble !"
