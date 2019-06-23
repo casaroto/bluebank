@@ -5,5 +5,6 @@ echo "Making pre run invocation changes..."
 
  npm install -g @angular/cli@1.2.5
  npm install -g @angular/compiler-cli@2.3.1
+ npm install -g typescript@2.0.3
 
 exec /usr/libexec/s2i/run
