@@ -44,7 +44,7 @@
     "protractor": "4.0.13",
     "ts-node": "1.2.1",
     "tslint": "4.3.0",
-    "typescript": "2.0.0",
+    "typescript": "2.3.4",
     "webpack": "3.0.0",
     "webpack-concat-plugin": "1.4.2",
     "webpack-dev-server": "2.11.1",
