@@ -1,0 +1,48 @@
+section {
+  color: #172033;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.summary-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summary-list p {
+  margin: 0;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7f9fc;
+}
+
+.summary-list span,
+.summary-list strong {
+  display: block;
+}
+
+.summary-list span {
+  color: #65738a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.summary-list strong {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.message {
+  color: #b34040;
+}
+
+@media (max-width: 760px) {
+  .summary-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
+import { UserSessionService } from '../user-session.service';
 
 @Component({
   selector: 'app-saldo',
   templateUrl: './saldo.component.html',
   styleUrls: ['./saldo.component.css']
 })
-export class SaldoComponent implements OnInit {
+export class SaldoComponent implements OnInit, OnDestroy {
   urlBase = 'http://localhost:8080';
-  correntistaLogado = '58424255135';
+  correntistaLogado = '';
+  userSubscription: Subscription;
   contaLogada = {
     idCorrentista: 0,
     nome: '',
@@ -22,10 +25,19 @@ export class SaldoComponent implements OnInit {
   };
   mensagem = '';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private userSession: UserSessionService) { }
 
   ngOnInit() {
-    this.obterSaldo();
+    this.userSubscription = this.userSession.userChanges.subscribe(user => {
+      this.correntistaLogado = user.cpf;
+      this.obterSaldo();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   obterSaldo() {

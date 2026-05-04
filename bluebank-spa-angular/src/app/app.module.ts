@@ -9,6 +9,7 @@ import { CorrentistaComponent } from './correntista/correntista.component';
 import { SaldoComponent } from './saldo/saldo.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TransferenciasComponent } from './transferencias/transferencias.component';
+import { UserSessionService } from './user-session.service';
 
 const appRoutes: Routes = [
   {
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     MaterialModule.forRoot(),
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
-  providers: [],
+  providers: [UserSessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

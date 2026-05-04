@@ -1,14 +1,55 @@
-<a md-button  color="primary">
-  {{title}}
-</a>
-<br>
-<br>
-<br>
-<h1>Funcionalidades</h1>
-<nav>
-  <a routerLink="/saldo" routerLinkActive="active">Saldo</a>
-  <a routerLink="/transferencias" routerLinkActive="active">Transferências</a>
-</nav>
-<router-outlet></router-outlet>
-<br>
- 
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">B</span>
+      <div>
+        <h1>{{title}}</h1>
+        <p>Internet Banking</p>
+      </div>
+    </div>
+
+    <div class="login-panel">
+      <label for="usuarioSelect">Acessar como</label>
+      <select id="usuarioSelect" [(ngModel)]="selectedCpf" (change)="trocarUsuario()">
+        <option *ngFor="let user of users" [ngValue]="user.cpf">
+          {{user.name}} - {{user.cpf}}
+        </option>
+      </select>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Conta selecionada</span>
+      <h2>{{contaLogada.nome || 'Selecione um correntista'}}</h2>
+      <div class="account-grid">
+        <div>
+          <span>Banco</span>
+          <strong>{{contaLogada.banco || '--'}}</strong>
+        </div>
+        <div>
+          <span>Agência</span>
+          <strong>{{contaLogada.agencia || '--'}}-{{contaLogada.agenciaDac || '0'}}</strong>
+        </div>
+        <div>
+          <span>Conta</span>
+          <strong>{{contaLogada.conta || '--'}}-{{contaLogada.contaDac || '0'}}</strong>
+        </div>
+      </div>
+    </div>
+
+    <aside class="balance-card">
+      <span>Saldo disponível</span>
+      <strong>R$ {{contaLogada.saldo || 0}}</strong>
+    </aside>
+  </section>
+
+  <nav class="feature-nav">
+    <a routerLink="/saldo" routerLinkActive="active">Saldo</a>
+    <a routerLink="/transferencias" routerLinkActive="active">Transferências</a>
+  </nav>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

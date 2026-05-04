@@ -1,10 +1,10 @@
 <section>
-  <app-correntista [cpf]="correntistaLogado" [urlBase]="urlBase"></app-correntista>
-
   <h2>Saldo</h2>
-  <p>Banco: {{contaLogada.banco}}</p>
-  <p>Agência: {{contaLogada.agencia}}-{{contaLogada.agenciaDac}}</p>
-  <p>Conta: {{contaLogada.conta}}-{{contaLogada.contaDac}}</p>
-  <p>Saldo: R$ {{contaLogada.saldo}}</p>
-  <p>{{mensagem}}</p>
+  <div class="summary-list">
+    <p><span>Banco</span><strong>{{contaLogada.banco}}</strong></p>
+    <p><span>Agência</span><strong>{{contaLogada.agencia}}-{{contaLogada.agenciaDac}}</strong></p>
+    <p><span>Conta</span><strong>{{contaLogada.conta}}-{{contaLogada.contaDac}}</strong></p>
+    <p><span>Saldo</span><strong>R$ {{contaLogada.saldo}}</strong></p>
+  </div>
+  <p class="message">{{mensagem}}</p>
 </section>

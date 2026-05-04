@@ -1,0 +1,66 @@
+section {
+  max-width: 620px;
+  color: #172033;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #65738a;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+select,
+input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #d4dce8;
+  border-radius: 8px;
+  color: #172033;
+  background: #ffffff;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+.message {
+  min-height: 22px;
+  margin: 6px 0 16px;
+  color: #1f6f60;
+  font-weight: 700;
+}
+
+.field-message {
+  min-height: 20px;
+  margin-top: 8px;
+  color: #65738a;
+  font-size: 13px;
+}
+
+.primary-action {
+  min-height: 44px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #1355a8;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-action:hover {
+  background: #0d468d;
+}

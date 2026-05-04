@@ -1,23 +1,21 @@
 <section>
-  <app-correntista [cpf]="correntistaLogado" [urlBase]="urlBase"></app-correntista>
-
   <h2>Transferências</h2>
-  <div>Conta para transferência</div>
-  <div>
-    <select id="contasSelect" [(ngModel)]="correntistaDestino">
+  <div class="form-row">
+    <label for="contasSelect">Conta para transferência</label>
+    <select id="contasSelect" [(ngModel)]="correntistaDestino" [disabled]="carregandoContas || !contas.length">
       <option [ngValue]="0">Selecione</option>
       <option *ngFor="let conta of contas" [ngValue]="conta.idCorrentista">
         {{conta.nome}} - Agência: {{conta.agencia}}/Conta:{{conta.conta}}-{{conta.contaDac}}
       </option>
     </select>
+    <div class="field-message">{{mensagemContas}}</div>
   </div>
-  <br>
-  <div>Valor da transferência</div>
-  <div>
+
+  <div class="form-row">
+    <label for="valor">Valor da transferência</label>
     <input type="number" color="primary" [(ngModel)]="valor" id="valor">
   </div>
-  <br>
-  <div>{{mensagem}}</div>
-  <br>
-  <a md-raised-button color="primary" (click)="transferir()">Efetuar transferência</a>
+
+  <div class="message">{{mensagem}}</div>
+  <button type="button" class="primary-action" (click)="transferir()">Efetuar transferência</button>
 </section>

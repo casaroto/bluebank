@@ -1,25 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
+import { UserSessionService } from '../user-session.service';
 
 @Component({
   selector: 'app-transferencias',
   templateUrl: './transferencias.component.html',
   styleUrls: ['./transferencias.component.css']
 })
-export class TransferenciasComponent implements OnInit {
+export class TransferenciasComponent implements OnInit, OnDestroy {
   urlBase = 'http://localhost:8080';
-  correntistaLogado = '58424255135';
-  contas;
+  correntistaLogado = '';
+  userSubscription: Subscription;
+  contas = [];
   valor = 0;
   idCorrentistaLogado = 0;
   correntistaDestino = 0;
   mensagem = '';
+  carregandoContas = false;
+  mensagemContas = '';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private userSession: UserSessionService) { }
 
   ngOnInit() {
-    this.obterContaLogada();
-    this.obterContas();
+    this.userSubscription = this.userSession.userChanges.subscribe(user => {
+      this.correntistaLogado = user.cpf;
+      this.correntistaDestino = 0;
+      this.mensagem = '';
+      this.mensagemContas = '';
+      this.obterContaLogada();
+      this.obterContas();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   obterContaLogada() {
@@ -33,13 +50,23 @@ export class TransferenciasComponent implements OnInit {
   }
 
   obterContas() {
+    this.carregandoContas = true;
+    this.contas = [];
+    this.mensagemContas = 'Carregando contas autorizadas...';
+
     this.http.get(this.urlBase + '/rest/correntistas/cadastrados/transferencia/' + this.correntistaLogado)
       .map(res => res.json())
       .subscribe(
-        data => this.contas = data,
-        err => this.logError(err),
+        data => this.tratarObterContas(data),
+        err => this.logErrorContas(err),
         () => console.log('Sucesso obterContas')
       );
+  }
+
+  tratarObterContas(resposta) {
+    this.contas = resposta || [];
+    this.carregandoContas = false;
+    this.mensagemContas = this.contas.length ? '' : 'Nenhuma conta autorizada para este correntista.';
   }
 
   transferir() {
@@ -71,6 +98,12 @@ export class TransferenciasComponent implements OnInit {
 
   logError(err) {
     this.mensagem = 'Não foi possível concluir a operação.';
+    console.error('Erro: ' + err);
+  }
+
+  logErrorContas(err) {
+    this.carregandoContas = false;
+    this.mensagemContas = 'Não foi possível carregar as contas para transferência.';
     console.error('Erro: ' + err);
   }
 

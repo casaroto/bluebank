@@ -1,0 +1,208 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+  color: #172033;
+  background:
+    linear-gradient(135deg, rgba(19, 85, 168, .10), rgba(0, 171, 142, .10)),
+    #f4f7fb;
+  box-sizing: border-box;
+}
+
+.topbar,
+.hero,
+.feature-nav,
+.content {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  background: #1355a8;
+  box-shadow: 0 10px 30px rgba(19, 85, 168, .25);
+}
+
+.brand h1,
+.hero h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.brand h1 {
+  font-size: 24px;
+}
+
+.brand p,
+.eyebrow,
+.account-grid span,
+.balance-card span,
+.login-panel label {
+  margin: 0;
+  color: #65738a;
+}
+
+.login-panel {
+  min-width: 280px;
+}
+
+.login-panel label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+select,
+input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #d4dce8;
+  border-radius: 8px;
+  color: #172033;
+  background: #ffffff;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 18px;
+}
+
+.hero-content,
+.balance-card,
+.content {
+  border: 1px solid rgba(138, 154, 178, .24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 18px 45px rgba(36, 51, 82, .08);
+}
+
+.hero-content {
+  padding: 32px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h2 {
+  margin-bottom: 24px;
+  font-size: 32px;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.account-grid div {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7f9fc;
+}
+
+.account-grid span,
+.account-grid strong {
+  display: block;
+}
+
+.account-grid strong {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.balance-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  background: #053c6f;
+  color: #ffffff;
+}
+
+.balance-card span {
+  color: rgba(255, 255, 255, .76);
+  font-weight: 700;
+}
+
+.balance-card strong {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.feature-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.feature-nav a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 18px;
+  border-radius: 8px;
+  color: #46546b;
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, .72);
+}
+
+.feature-nav a.active {
+  color: #ffffff;
+  background: #008f7a;
+}
+
+.content {
+  padding: 26px;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .topbar,
+  .hero {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+}
