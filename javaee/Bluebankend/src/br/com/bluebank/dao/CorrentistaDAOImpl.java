@@ -57,6 +57,7 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		        	correntista.setAgenciaDac(rs.getInt("dac_agencia"));
 		        	correntista.setConta(rs.getInt("conta"));
 		        	correntista.setContaDac(rs.getInt("dac_conta"));
+		        	correntista.setSaldo(rs.getDouble("saldo"));
 		        	lista.add(correntista);
 		        }
 		        
@@ -89,7 +90,8 @@ public class CorrentistaDAOImpl implements CorrentistaDAO {
 		        	correntista.setAgencia(rs.getInt("agencia"));
 		        	correntista.setAgenciaDac(rs.getInt("dac_agencia"));
 		        	correntista.setConta(rs.getInt("conta"));
-		        	correntista.setConta(rs.getInt("dac_conta"));
+		        	correntista.setContaDac(rs.getInt("dac_conta"));
+		        	correntista.setSaldo(rs.getDouble("saldo"));
 		        }
 		        
 		    } catch (SQLException ex) {

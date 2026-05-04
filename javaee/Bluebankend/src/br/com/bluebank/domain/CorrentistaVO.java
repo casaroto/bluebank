@@ -9,6 +9,7 @@ public class CorrentistaVO {
 		private int agenciaDac;
 		private int conta;
 		private int contaDac;
+		private double saldo;
 		private boolean logado;
 		
 		public int getIdCorrentista() {
@@ -46,6 +47,12 @@ public class CorrentistaVO {
 		}
 		public void setContaDac(int dac) {
 			this.contaDac = dac;
+		}
+		public double getSaldo() {
+			return saldo;
+		}
+		public void setSaldo(double saldo) {
+			this.saldo = saldo;
 		}
 		public boolean isLogado() {
 			return logado;

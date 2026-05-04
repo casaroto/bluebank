@@ -1,45 +1,14 @@
-
 <a md-button  color="primary">
   {{title}}
 </a>
 <br>
 <br>
 <br>
-
-      <app-correntista [cpf]='correntistaLogado' [urlBase]='urlBase'  (onCorrentistaMudou)="onCorrentistaMudou($event)"></app-correntista>
-<div>
-    <br>
-    <br>
-    
-    <div>Conta para transferência</div>
-    <div>
-      <select id="contasSelect" [(ngModel)]="correntistaDestino">  
-        <option *ngFor="let conta of contas" value="{{conta.idCorrentista}}">
-          {{conta.nome}} - Agência: {{conta.agencia}}/Conta:{{conta.conta}}-{{conta.contaDac}}
-        </option>
-      </select> 
-    </div>
-    <br>
-    <br>
-    <br>
-    <div>Valor da transferência</div>
-    <div>
-      <input type="text" color="primary" [(ngModel)]="valor" id="valor">
-    </div>
-    <br>
-    <br>
-    <div>{{mensagem}}</div>
-    <br>
-    <a md-raised-button color="primary" (click)="transferir()">Efetuar transferência</a>
-    
-  </div>
-    <h1>Funcionalidades</h1>
-  <nav>
-    
-    <a routerLink="/saldo" routerLinkActive="active">Saldo</a>
-     <a routerLink="/transferencias" routerLinkActive="active">Transferências</a>
-  </nav>
-   <router-outlet></router-outlet>
-
-    <br>
+<h1>Funcionalidades</h1>
+<nav>
+  <a routerLink="/saldo" routerLinkActive="active">Saldo</a>
+  <a routerLink="/transferencias" routerLinkActive="active">Transferências</a>
+</nav>
+<router-outlet></router-outlet>
+<br>
  

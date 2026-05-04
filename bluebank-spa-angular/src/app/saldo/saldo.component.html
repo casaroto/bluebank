@@ -1,3 +1,10 @@
-<p>
-  saldo works!
-</p>
+<section>
+  <app-correntista [cpf]="correntistaLogado" [urlBase]="urlBase"></app-correntista>
+
+  <h2>Saldo</h2>
+  <p>Banco: {{contaLogada.banco}}</p>
+  <p>Agência: {{contaLogada.agencia}}-{{contaLogada.agenciaDac}}</p>
+  <p>Conta: {{contaLogada.conta}}-{{contaLogada.contaDac}}</p>
+  <p>Saldo: R$ {{contaLogada.saldo}}</p>
+  <p>{{mensagem}}</p>
+</section>

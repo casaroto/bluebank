@@ -12,6 +12,11 @@ import { TransferenciasComponent } from './transferencias/transferencias.compone
 
 const appRoutes: Routes = [
   {
+    path: '',
+    redirectTo: '/saldo',
+    pathMatch: 'full'
+  },
+  {
     path: 'saldo',
     component: SaldoComponent,
     data: { title: 'Saldo' }
@@ -36,7 +41,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

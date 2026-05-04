@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceImpl implements DataSource {
 	
-	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
-	private static final String CONNECTION_URL = "jdbc:mysql://localhost/bluebank?user=blue&password=6945";
+	private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+	private static final String CONNECTION_URL = "jdbc:mysql://localhost/bluebank?user=blue&password=6945&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 	
 	static{
         try {
