@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Subscription } from 'rxjs/Subscription';
+import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
+
+import { Conta } from '../models';
 import { UserSessionService } from '../user-session.service';
 
 @Component({
@@ -9,10 +11,10 @@ import { UserSessionService } from '../user-session.service';
   styleUrls: ['./saldo.component.css']
 })
 export class SaldoComponent implements OnInit, OnDestroy {
-  urlBase = 'http://localhost:8080';
+  urlBase = '/bluebackend';
   correntistaLogado = '';
-  userSubscription: Subscription;
-  contaLogada = {
+  userSubscription?: Subscription;
+  contaLogada: Conta = {
     idCorrentista: 0,
     nome: '',
     cpf: '',
@@ -25,24 +27,23 @@ export class SaldoComponent implements OnInit, OnDestroy {
   };
   mensagem = '';
 
-  constructor(private http: Http, private userSession: UserSessionService) { }
+  constructor(private http: HttpClient, private userSession: UserSessionService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.userSubscription = this.userSession.userChanges.subscribe(user => {
       this.correntistaLogado = user.cpf;
       this.obterSaldo();
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
 
-  obterSaldo() {
-    this.http.get(this.urlBase + '/rest/correntista/' + this.correntistaLogado)
-      .map(res => res.json())
+  obterSaldo(): void {
+    this.http.get<Conta>(this.urlBase + '/rest/correntista/' + this.correntistaLogado)
       .subscribe(
         data => this.contaLogada = data,
         err => this.logError(err),
@@ -50,7 +51,7 @@ export class SaldoComponent implements OnInit, OnDestroy {
       );
   }
 
-  logError(err) {
+  logError(err: unknown): void {
     this.mensagem = 'Não foi possível consultar o saldo.';
     console.error('Erro: ' + err);
   }

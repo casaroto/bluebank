@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface DemoUser {
   name: string;
   cpf: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserSessionService {
   private selectedUser = new BehaviorSubject<DemoUser>({
     name: 'Ana Maria',
@@ -30,8 +31,8 @@ export class UserSessionService {
     return this.selectedUser.getValue();
   }
 
-  selectUser(cpf: string) {
-    var selected = this.users.find(user => user.cpf === cpf);
+  selectUser(cpf: string): void {
+    const selected = this.users.find(user => user.cpf === cpf);
 
     if (selected) {
       this.selectedUser.next(selected);

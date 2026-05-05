@@ -1,14 +1,14 @@
 package br.com.bluebank.business.tests;
 
 import static org.mockito.Mockito.when;
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.Whitebox;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.bluebank.business.ContaBeanImpl;
 import br.com.bluebank.dao.ContaDAO;
@@ -25,17 +25,15 @@ public class ContaBeanImplTest {
 	@Before
 	public void init(){
 		dao = Mockito.mock(ContaDAO.class);
-		bean = Mockito.mock(ContaBeanImpl.class);
-		Whitebox.setInternalState(bean, "contaDAO", dao);
+		bean = new ContaBeanImpl();
+		ReflectionTestUtils.setField(bean, "contaDAO", dao);
 	}
 	
 	@Test
 	public void obterCorrentistaLogadoTest() throws Exception {
 		ContaVO conta = null;
 		
-		when(dao.obterConta(Matchers.anyString())).thenReturn(mock(true));
-			
-		when(bean.obterConta(Matchers.anyString())).thenCallRealMethod();
+		when(dao.obterConta(ArgumentMatchers.anyString())).thenReturn(mock(true));
 		
 		conta = bean.obterConta("38521876300");
 		

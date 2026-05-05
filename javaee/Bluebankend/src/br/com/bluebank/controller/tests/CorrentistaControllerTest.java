@@ -5,14 +5,13 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.Whitebox;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.bluebank.business.CorrentistaBean;
 import br.com.bluebank.controller.CorrentistaController;
@@ -29,17 +28,15 @@ public class CorrentistaControllerTest {
 	@Before
 	public void init(){
 		correntistaBean = Mockito.mock(CorrentistaBean.class);
-		correntistaController = Mockito.mock(CorrentistaController.class);
-		Whitebox.setInternalState(correntistaController, "correntistaBean", correntistaBean);
+		correntistaController = new CorrentistaController();
+		ReflectionTestUtils.setField(correntistaController, "correntistaBean", correntistaBean);
 	}
 	
 	@Test
 	public void obterCorrentistaLogadoTest() {
 		CorrentistaVO usuario = null;
 		
-		when(correntistaBean.obterCorrentista(Matchers.anyString())).thenReturn(mock(true));
-			
-		when(correntistaController.obterCorrentistaLogado(Matchers.anyString())).thenCallRealMethod();
+		when(correntistaBean.obterCorrentista(ArgumentMatchers.anyString())).thenReturn(mock(true));
 		
 		usuario = correntistaController.obterCorrentistaLogado("38521876300");
 		
@@ -52,9 +49,7 @@ public class CorrentistaControllerTest {
 	public void listarCorrentistasCadastradosTransferenciaTest() {
 		List<CorrentistaVO> usuario = null;
 		
-		when(correntistaBean.listarCorrentistasCadastradosTransferencia(Matchers.anyString())).thenReturn(mockLista());
-			
-		when(correntistaController.listarCorrentistasCadastradosTransferencia(Matchers.anyString())).thenCallRealMethod();
+		when(correntistaBean.listarCorrentistasCadastradosTransferencia(ArgumentMatchers.anyString())).thenReturn(mockLista());
 		
 		usuario = correntistaController.listarCorrentistasCadastradosTransferencia("38521876300");
 		

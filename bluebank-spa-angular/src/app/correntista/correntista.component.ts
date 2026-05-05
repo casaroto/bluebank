@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
+import { Conta } from '../models';
 
 @Component({
   selector: 'app-correntista',
@@ -7,22 +9,21 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
   styleUrls: ['./correntista.component.css']
 })
 export class CorrentistaComponent implements OnInit {
-  contaLogada = {idCorrentista: 0, nome: '', agencia: 0, conta: 0, contaDac: 0};
+  contaLogada: Conta = {idCorrentista: 0, nome: '', agencia: 0, conta: 0, contaDac: 0};
 
-  @Input('cpf') cpf: string;
-  @Input('urlBase') urlBase: string;
-  @Output() onCorrentistaMudou = new EventEmitter<number>();
+  @Input('cpf') cpf = '';
+  @Input('urlBase') urlBase = '';
+  @Output() correntistaMudou = new EventEmitter<number>();
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.obterContaLogada();
   }
 
   
-  obterContaLogada() {
-      this.http.get(this.urlBase + '/rest/correntista/' + this.cpf)
-        .map(res => res.json())
+  obterContaLogada(): void {
+      this.http.get<Conta>(this.urlBase + '/rest/correntista/' + this.cpf)
         .subscribe(
           data => this.tratarObterContaLogada(data),
           err => this.logError(err),
@@ -30,13 +31,13 @@ export class CorrentistaComponent implements OnInit {
         );
   }
 
- tratarObterContaLogada(resposta){
+ tratarObterContaLogada(resposta: Conta): void {
     this.contaLogada = resposta;
     console.log(resposta);
-     this.onCorrentistaMudou.emit(this.contaLogada.idCorrentista);
+     this.correntistaMudou.emit(this.contaLogada.idCorrentista);
  }
 	
-  logError(err) {
+  logError(err: unknown): void {
 	  console.error('Erro: ' + err);
 	}
 

@@ -22,6 +22,7 @@
     <div class="hero-content">
       <span class="eyebrow">Conta selecionada</span>
       <h2>{{contaLogada.nome || 'Selecione um correntista'}}</h2>
+      <p class="message" *ngIf="mensagem">{{mensagem}}</p>
       <div class="account-grid">
         <div>
           <span>Banco</span>

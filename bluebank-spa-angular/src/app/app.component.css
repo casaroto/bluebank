@@ -55,6 +55,7 @@
 }
 
 .brand p,
+.message,
 .eyebrow,
 .account-grid span,
 .balance-card span,
@@ -120,6 +121,12 @@ input {
 .hero h2 {
   margin-bottom: 24px;
   font-size: 32px;
+}
+
+.message {
+  margin: -12px 0 20px;
+  color: #b34040;
+  font-weight: 700;
 }
 
 .account-grid {

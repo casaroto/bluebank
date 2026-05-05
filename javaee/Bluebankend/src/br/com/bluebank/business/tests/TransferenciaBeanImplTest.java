@@ -4,10 +4,10 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.Whitebox;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.bluebank.business.ContaBean;
 import br.com.bluebank.business.TransferenciaBeanImpl;
@@ -31,14 +31,14 @@ public class TransferenciaBeanImplTest {
 		dao = Mockito.mock(TransferenciaDAO.class);
 		contaBean = Mockito.mock(ContaBean.class);
 		bean = new TransferenciaBeanImpl();
-		Whitebox.setInternalState(bean, "transferenciaDAO", dao);
-		Whitebox.setInternalState(bean, "contaBean", contaBean);
+		ReflectionTestUtils.setField(bean, "transferenciaDAO", dao);
+		ReflectionTestUtils.setField(bean, "contaBean", contaBean);
 	}
 	
 	@Test
 	public void obterCorrentistaLogadoTest() throws Exception {
 			
-	    when(contaBean.obterConta(Matchers.anyInt())).thenReturn(mock(true));
+	    when(contaBean.obterConta(ArgumentMatchers.anyInt())).thenReturn(mock(true));
 		
 		bean.efetuarTransferencia(new TransferenciaVO());
 	

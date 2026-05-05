@@ -1,14 +1,14 @@
 package br.com.bluebank.business.tests;
 
 import static org.mockito.Mockito.when;
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.Whitebox;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.bluebank.business.CorrentistaBeanImpl;
 import br.com.bluebank.dao.CorrentistaDAO;
@@ -25,17 +25,15 @@ public class CorrentistaBeanImplTest {
 	@Before
 	public void init(){
 		dao = Mockito.mock(CorrentistaDAO.class);
-		bean = Mockito.mock(CorrentistaBeanImpl.class);
-		Whitebox.setInternalState(bean, "correntistaDAO", dao);
+		bean = new CorrentistaBeanImpl();
+		ReflectionTestUtils.setField(bean, "correntistaDAO", dao);
 	}
 	
 	@Test
 	public void obterCorrentistaLogadoTest() throws Exception {
 		CorrentistaVO correntistaVO = null;
 		
-		when(dao.obterCorrentista(Matchers.anyString())).thenReturn(mock(true));
-			
-		when(bean.obterCorrentista(Matchers.anyString())).thenCallRealMethod();
+		when(dao.obterCorrentista(ArgumentMatchers.anyString())).thenReturn(mock(true));
 		
 		correntistaVO = bean.obterCorrentista("38521876300");
 		

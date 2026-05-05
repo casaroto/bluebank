@@ -1,81 +1,161 @@
-# Projeto Bluebank frontend e backend 
+# Bluebank
 
+Projeto de exemplo com frontend Angular e backend Java/Spring MVC para treinamentos e POCs.
 
-**Blue Bank** é uma instituição financeira fictícia cujas demandas de desenvolvimento de software têm aumentado muito nos últimos meses. 
+**Blue Bank** e uma instituicao financeira ficticia usada para demonstrar uma SPA consumindo APIs REST.
 
-## Proposta de arquitetura técnica inicial
-- Backend Java EE - Spring framework -Spring MVC para criação das APIs REST
-- Interface web SPA com Angular 2 e Angular Material  
-- Utilização de arquitetura OOP, utilizando MVC - com divisão de camadas de serviço REST, camada Business e camada DAO para persistência 
-- Camada DAO criada com uso de interfaces e com injeção de dependências gerenciadas pelo Spring framework  
-- Banco de dados relacional ORM MYSQL 
-- Testes unitários utilizando Junit com Mockito
+## Modulos
 
-## Proposta de condução inicial do projeto
-- Criação interativa de uma prova de conceito com interface web simples acessando uma API REST inicialmente mockada 
-- Modelar as demais camadas do Backend conforme melhor elucidação dos requisitos
-- Em uma etapa posterior onde os requisitos/proposta de projeto estiver mais madura criar e integrar com o banco de dados
+- `bluebank-spa-angular`: frontend SPA em Angular.
+- `javaee/Bluebankend`: backend Java empacotado como WAR e executado localmente com Jetty via Maven.
 
-## Arquitetura de módulos
-- Projeto SPA deployado em war JEE rodando em servidor JBOSS
-- Projeto Backend deployado em war JEE rodando em servidor JBOSS
+## Versoes Atuais
 
-## Ambiente de desenvolvimento
-- Servidor Java: JBOSS EAP 6.1 - Linux
-- Servidor MYSQL 5.1 - Linux
-- IDE Eclipse para desenvolvimento Java rodando em linux
-- IDE Visual Studio Code para desenvolvimento Angular JS 2 rodando em MacOS
-- Angular cli e servidor Node.js para servir a camada SPA
-- Plugin de índice de cobertura de testes instalado no Eclipse
+Backend:
 
-## Ambiente cloud escolhido para live preview do projeto
-- Amazon Web Services
+- Java 17
+- Maven 3.9.10
+- Spring MVC 5.3.39
+- Jetty Maven Plugin 9.4.58
+- Jackson 2.17.3
+- JUnit 4.13.2
+- Mockito 5.23.0
+- MySQL Connector/J 8.0.33
 
-## Site SPA publicado no servidor AWS para teste integrado da funcionalidade  
-http://ec2-52-87-229-207.compute-1.amazonaws.com:4200/
+Frontend:
 
-***Observação: RODAR COM PLUG-IN CORS DO CHROME INSTALADO, POIS O APLICATIVO E A API TIVERAM QUE FICAR EM PORTAS DIFERENTES
-https://chrome.google.com/webstore/search/CORSTOGGLE
+- Node.js 20.19.2
+- npm 10.8.2
+- Angular 21.2.x
+- Angular CLI 21.2.x
+- TypeScript 5.9.x
+- RxJS 7.8.x
+- Vitest 4.0.x
 
-## Github
-https://github.com/casaroto/bluebank
+## Como Rodar o Backend
 
-## WIKI da API
-https://github.com/casaroto/bluebank/wiki
+O backend sobe no contexto `/bluebackend` e, por padrao, na porta `8080`.
 
-## APIs publicadas no servidor AWS Jboss 
-http://ec2-52-87-229-207.compute-1.amazonaws.com/bluebackend/rest/correntista/{cpf}     <br>
-Exemplo: 
-http://ec2-52-87-229-207.compute-1.amazonaws.com/bluebackend/rest/correntista/58424255135    <br>
+```bash
+cd javaee/Bluebankend
+mvn clean package
+mvn jetty:run
+```
 
-http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/{cpf}     <br>
-Exemplo:
-http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/correntistas/cadastrados/transferencia/58424255135   <br>
+Para usar outra porta:
 
-http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/transferencia/{idCorrentistaOrigem}/{idCorrentistaDestino}/{valor}   <br>
-Exemplo:
-http://ec2-52-87-229-207.amazonaws.com/bluebackend/rest/transferencia/2/1/1000   <br>
+```bash
+mvn -Djetty.port=8081 jetty:run
+```
 
-## Problemas e bugs
-https://github.com/casaroto/bluebank/issues
+Endpoint rapido para validar:
 
-## Instruções para deploy e execução
-- Executar o arquivo createdb.sql no banco de dados Mysql
-- Efetuar deploy dos projetos WAR e EAR gerados - diretório deploy
-- Ou importar projeto JavaEE na IDE Eclipse e exportar o WAR pela ferramenta de exportação.
-- Utiliza arquivo settings.xml para configurar repositórios do Maven, arquivo está no diretório /bluebank/javaee/Bluebankend
-- Em caso de problemas com dependências do Maven utilizar os arquivos .project e .classpath do diretório bluebank/javaee/arquivos-auxiliares
-- Rodar o aplicativo spa do diretório bluebank-spa-angular 
-	--Instalar as dependências com npm install
-	--Após isto rodar o aplicativo com ng serve --host 0.0.0.0
+```bash
+curl -H "Accept: application/json" http://localhost:8080/bluebackend/rest/boasvindas
+```
 
-## Realese map *alterações desejadas para versão 2.0 (não foram realizadas devido a restrição de tempo)
-- Incluir SWAGGER para documentação da API e retirar informações da WIKI
-- Incluir chamadas a log em todas as classes e pontos críticos do sistema
-- Melhorar código Angular 2 com uso de Observables e criação de classes Service separadas
-- Melhorias de segurança:
-	Filtrar todo conteúdo enviado via API para impedir ataques sql injection, XSS
-- Passar todo código fonte na ferramenta SONAR para garantia de qualidade
+Resposta esperada:
 
+```json
+{"mensagem":"Aproveite nossa nova linha de crédito."}
+```
 
+## Como Rodar o Frontend
 
+Em outro terminal:
+
+```bash
+cd bluebank-spa-angular
+npm install
+npm start
+```
+
+O frontend fica disponivel em:
+
+```text
+http://localhost:4200/
+```
+
+O proxy do Angular esta configurado em `bluebank-spa-angular/proxy.conf.json` para encaminhar chamadas de `/bluebackend` para:
+
+```text
+http://localhost:8080
+```
+
+Por isso, para rodar frontend e backend juntos sem CORS extra, deixe o backend em `8080`.
+
+## Testes
+
+Backend:
+
+```bash
+cd javaee/Bluebankend
+mvn test
+```
+
+Frontend:
+
+```bash
+cd bluebank-spa-angular
+npm test
+```
+
+## Build
+
+Backend WAR:
+
+```bash
+cd javaee/Bluebankend
+mvn clean package
+```
+
+Artefato gerado:
+
+```text
+javaee/Bluebankend/target/bluebankend-0.0.1-SNAPSHOT.war
+```
+
+Frontend:
+
+```bash
+cd bluebank-spa-angular
+npm run build
+```
+
+## APIs Locais
+
+```text
+GET http://localhost:8080/bluebackend/rest/boasvindas
+GET http://localhost:8080/bluebackend/rest/correntista/{cpf}
+GET http://localhost:8080/bluebackend/rest/correntistas/cadastrados/transferencia/{cpf}
+GET http://localhost:8080/bluebackend/rest/transferencia/{idCorrentistaOrigem}/{idCorrentistaDestino}/{valor}
+```
+
+Exemplos:
+
+```text
+http://localhost:8080/bluebackend/rest/correntista/58424255135
+http://localhost:8080/bluebackend/rest/correntistas/cadastrados/transferencia/58424255135
+http://localhost:8080/bluebackend/rest/transferencia/2/1/1000
+```
+
+## Observacoes
+
+- O projeto ainda usa a API `javax.servlet`, entao o backend foi atualizado para Spring MVC 5.3.x. Spring 6 exigiria migracao para `jakarta.*`.
+- As bibliotecas do backend sao resolvidas pelo Maven. Nao adicione jars manualmente em `WebContent/WEB-INF/lib`.
+- O backend possui uma camada DAO preparada para MySQL, mas os testes atuais usam mocks.
+
+## Links
+
+- GitHub: https://github.com/casaroto/bluebank
+- Wiki da API: https://github.com/casaroto/bluebank/wiki
+- Issues: https://github.com/casaroto/bluebank/issues
+
+## Roadmap Sugerido
+
+- Implementar login e seguranca com OAuth2.
+- Incluir Swagger/OpenAPI para documentacao da API.
+- Adicionar logs nas classes e pontos criticos.
+- Melhorar a cobertura de testes.
+- Revisar seguranca contra SQL injection e XSS.
+- Passar o codigo em uma ferramenta de qualidade como Sonar.
